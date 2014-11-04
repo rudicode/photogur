@@ -1,7 +1,20 @@
 class PicturesController < ApplicationController
 
 def index
-  @pictures = [
+  @pictures = picture_array
+  end
+
+  def show
+    
+  @pictures = picture_array
+  @picture = @pictures[params[:id].to_i]
+
+  end
+
+end
+
+def picture_array
+  [
       {
         :title  => "The old church on the coast of White sea",
         :artist => "Sergey Ershov",
@@ -18,6 +31,4 @@ def index
         :url    => "http://bitmakerlabs.s3.amazonaws.com/photogur/girl.jpg"
       }
     ]
-  end
-
 end
