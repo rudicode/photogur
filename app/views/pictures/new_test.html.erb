@@ -1,0 +1,20 @@
+<h1>Day 3 Forms</h1>
+<!-- html_tag -->
+
+<!-- form_tag -->
+
+<!-- form_for -->
+
+<%= form_for Picture.new do |f| %>
+  <%= f.label :artist %>
+  <%= f.text_field :artist %>
+
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+
+  <%= f.label :url %>
+  <%= f.text_field :url %>
+  
+  <%= f.submit "Save" %>  
+<% end %>
+  

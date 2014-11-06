@@ -3,7 +3,8 @@ class PicturesController < ApplicationController
   before_action :set_picture, only: [:show, :edit, :update, :destroy]
 
   def index
-    @pictures = Picture.all
+    @page = params[:page] ? params[:page].to_i : 1
+    @most_recent_pictures = Picture.page(@page)
   end
 
   def show
@@ -32,7 +33,7 @@ class PicturesController < ApplicationController
     # @picture = Picture.find(params[:id])
     
     if @picture.update_attributes(picture_params)
-      redirect_to picture_url(@picture)
+      redirect_to picture_path(@picture)
     else
       render :edit
     end
@@ -42,7 +43,6 @@ class PicturesController < ApplicationController
     # @picture = Picture.find(params[:id])
     @picture.destroy
     redirect_to pictures_url
-
   end
 
 private
